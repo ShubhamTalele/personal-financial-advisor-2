@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'  # ✅ Keep 3.13 as per your Azure setting
+          python-version: '3.10'  # ✅ Keep 3.13 as per your Azure setting
 
       - name: Create and start virtual environment
         run: |
@@ -73,3 +73,4 @@ jobs:
         with:
           app-name: 'financial'
           slot-name: 'Production'
+
