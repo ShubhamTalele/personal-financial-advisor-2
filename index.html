@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>💰 Personal Financial Advisor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+  <div class="form-card">
+    <h1>💰 Personal Financial Advisor</h1>
+
+    <form action="/predict" method="post" class="grid-two">
+      <label>Monthly Income (INR):</label>
+      <input type="number" name="Income" required>
+
+      <label>Age:</label>
+      <input type="number" name="Age" required>
+
+      <label>Number of Dependents:</label>
+      <input type="number" name="Dependents" required>
+
+      <label>Occupation:</label>
+      <select name="Occupation" required>
+        <option value="0">Professional</option>
+        <option value="1">Retired</option>
+        <option value="2">Self_Employed</option>
+        <option value="3">Student</option>
+      </select>
+
+      <label>City Tier:</label>
+      <select name="City_Tier" required>
+        <option value="0">Tier 1</option>
+        <option value="1">Tier 2</option>
+        <option value="2">Tier 3</option>
+      </select>
+
+      <label>Desired Savings Percentage (%):</label>
+      <input type="number" name="Desired_Savings_Percentage" required>
+
+      <hr class="full">
+
+      <label>Monthly Rent (INR):</label>
+      <input type="number" name="Rent" value="0" required>
+
+      <label>Monthly Loan Repayment (INR):</label>
+      <input type="number" name="Loan_Repayment" value="0" required>
+
+      <label>Monthly Groceries (INR):</label>
+      <input type="number" name="Groceries" value="0" required>
+
+      <label>Monthly Transport (INR):</label>
+      <input type="number" name="Transport" value="0" required>
+
+      <label>Monthly Eating Out (INR):</label>
+      <input type="number" name="Eating_Out" value="0" required>
+
+      <label>Monthly Entertainment (INR):</label>
+      <input type="number" name="Entertainment" value="0" required>
+
+      <label>Monthly Utilities (INR):</label>
+      <input type="number" name="Utilities" value="0" required>
+
+      <label>Monthly Insurance (INR):</label>
+      <input type="number" name="Insurance" value="0" required>
+
+      <label>Monthly Education (INR):</label>
+      <input type="number" name="Education" value="0" required>
+
+      <label>Monthly Miscellaneous (INR):</label>
+      <input type="number" name="Miscellaneous" value="0" required>
+
+      <div class="full center">
+        <button type="submit" class="btn-primary">🔍 Analyze</button>
+      </div>
+      <!-- Chatbot Button + Window -->
+<div id="chatbot-container">
+  <button id="chatbot-btn">💬 Chat</button>
+  <div id="chat-window">
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Ask me anything..." />
+  </div>
+</div>
+
+<script>
+const chatBtn = document.getElementById("chatbot-btn");
+const chatWindow = document.getElementById("chat-window");
+const chatInput = document.getElementById("chat-input");
+const chatLog = document.getElementById("chat-log");
+
+chatBtn.onclick = () => {
+  chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";
+};
+
+chatInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    const userText = chatInput.value;
+    chatLog.innerHTML += `<div><b>You:</b> ${userText}</div>`;
+    fetch("/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({message: userText})
+    })
+    .then(res => res.json())
+    .then(data => {
+      chatLog.innerHTML += `<div><b>Bot:</b> ${data.response}</div>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
+    });
+    chatInput.value = "";
+  }
+});
+</script>
+
+    </form>
+  </div>
+</body>
+</html>

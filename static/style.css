@@ -1,0 +1,134 @@
+/* ---------- Base ---------- */
+*{box-sizing:border-box;}
+body.bg{
+  margin:0;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:url("{{ url_for('static', filename='img/Financial-Advisors.jpg') }}") center/cover fixed no-repeat;
+  padding:40px 0;
+  color:#222;
+}
+.form-card{
+  width:90%;
+  max-width:950px;
+  margin:0 auto;
+  background:#fff;
+  padding:32px 36px;
+  border-radius:18px;
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
+}
+.form-card.large{max-width:1000px;}
+h1,h2,h3{margin-top:0;color:#0e2a47;}
+hr.full{
+  grid-column:1 / -1;
+  border:none;
+  border-top:1px solid #ddd;
+  margin:10px 0 4px;
+}
+
+/* ---------- Form Grid ---------- */
+.grid-two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px 24px;
+}
+.grid-two label{
+  font-weight:600;
+  font-size:14px;
+  align-self:center;
+}
+.grid-two input, .grid-two select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:14px;
+}
+.grid-two .full{grid-column:1 / -1;}
+.center{text-align:center;}
+.mt-20{margin-top:20px;}
+
+/* ---------- Summary / Logic ---------- */
+.summary-box{
+  padding:18px 22px;
+  background:#f4f9ff;
+  border-left:5px solid #1c92d2;
+  margin-bottom:18px;
+  line-height:1.6;
+}
+.logic-box{
+  background:#fff7e6;
+  border-left:5px solid #f0ad4e;
+  padding:14px 18px;
+  margin:20px 0;
+  font-style:italic;
+  box-shadow:0 0 5px #ddd;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary, .btn-secondary, .btn-download{
+  display:inline-block;
+  padding:12px 22px;
+  border:none;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn-primary{background:#1c92d2;}
+.btn-primary:hover{background:#176ea0;}
+.btn-secondary{background:#6c757d;}
+.btn-secondary:hover{background:#565e64;}
+.btn-download{background:#28a745;}
+.btn-download:hover{background:#1e7e34;}
+
+/* ---------- Charts ---------- */
+.chart-img{
+  display:block;
+  max-width:95%;
+  margin:16px auto;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-shadow:0 0 6px rgba(0,0,0,.1);
+}
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: Arial;
+  z-index: 9999;
+}
+#chatbot-btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+#chat-window {
+  display: none;
+  width: 300px;
+  height: 350px;
+  background: #fff;
+  border: 2px solid #0d6efd;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  margin-top: 10px;
+}
+#chat-log {
+  height: 280px;
+  overflow-y: auto;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+#chat-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}

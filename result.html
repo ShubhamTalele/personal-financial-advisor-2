@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Financial Summary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+  <div class="form-card large">
+
+    <h2>📈 Your Financial Summary</h2>
+
+    <div class="summary-box">
+      <p><strong>Savings Rate:</strong> {{ savings_rate }}%</p>
+      <p><strong>Savings Gap:</strong> {{ savings_gap }}%</p>
+      <p><strong>Overspending:</strong> {{ overspending_status }}</p>
+      <p><strong>Recommended Investment:</strong> {{ investment_type }}</p>
+      {% if prob_text %}
+      <p><strong>Model Probabilities:</strong> {{ prob_text }}</p>
+      {% endif %}
+    </div>
+
+    <div class="logic-box">
+      <p><strong>💡 Why this investment?</strong><br>{{ explanation }}</p>
+    </div>
+
+    <h3>📊 Visual Insights</h3>
+
+    <img src="{{ pie_chart }}"  class="chart-img" alt="Spending Pie">
+    <img src="{{ top_chart }}"  class="chart-img" alt="Top Spending">
+    <img src="{{ pct_chart }}"  class="chart-img" alt="% of Income by Category">
+    <!-- <img src="{{ gap_chart }}"  class="chart-img" alt="Savings Gap"> -->
+    <img src="{{ nw_chart }}"   class="chart-img" alt="Needs vs Wants">
+    <img src="{{ stack_chart }}" class="chart-img" alt="Income Split Stacked Bar">
+    {% if prob_chart %}
+    <img src="{{ prob_chart }}" class="chart-img" alt="Investment Probabilities">
+    {% endif %}
+
+    <div class="center mt-20">
+      <a href="/" class="btn-secondary">🔁 Analyze Again</a>
+      <a href="/download" class="btn-download">📥 Download Report (PDF)</a>
+    </div>
+
+  </div>
+</body>
+</html>
